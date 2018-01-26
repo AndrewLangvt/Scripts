@@ -1,4 +1,4 @@
-"""This script will identify all significant events (PSI>0.1 & p>0.95) occuring in the diff.gz output files from Whippet.  
+"""This script will identify all significant events (PSI>0.1 & p>0.95) occuring in the diff.gz output files from Whippet."""
 
 import re
 import sys
