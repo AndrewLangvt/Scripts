@@ -10,7 +10,7 @@ PIGEON_ASSEMBLY=/pylon2/mc3bg6p/al2025/parental_assembly/RockDove.HPG.v1.1.1.fas
 SALMON_DIR=/pylon2/mc3bg6p/al2025/storage/salmon-0.8.2/bin
 SALMON_INDEX=/pylon2/mc3bg6p/al2025/mapping_indices/salmon_index/HPG_parental_index
 
-ID_LIST=`ls -l *TRIM.*fq.gz | awk '{print $9}' | sed 's/[\.]R[1-2][\.].*//g;s/.*[\/]//g;s/.TRIM.*//g' | sort -u`
+ID_LIST=`ls -l *TRIM*gz | awk '{print $9}' | sed 's/.TRIM.*//g' | sort -u`
 
 #if index is previously generated, the script can access the index file variable $SALMON_INDEX
 #defined above.  If index needs to be generated, uncomment the below command to generate
