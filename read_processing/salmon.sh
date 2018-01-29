@@ -25,15 +25,16 @@ echo ""
 SALMON_OUT=${DATA}_salmon_mapping
 mkdir ${SALMON_OUT}
 
-for i in $(ls -l *TRIM.*.R1.fq.gz); do
-        SAMPLE=$(basename -s .TRIM.*.R1.fq.gz $i)
+ID_LIST=`ls -l *TRIM*gz | awk '{print $9}' | sed 's/.TRIM.*//g' | sort -u`
+  
+for SAMPLE in $ID_LIST; do
 
         OUTFILE_SALMON=${SAMPLE}_maps.txt
         mkdir ${SALMON_OUT}/salmon_$SAMPLE
 
         $SALMON_DIR/salmon quant -i $SALMON_INDEX -l A \
-        -1 $SAMPLE.TRIM.*.R1.fq.gz \
-        -2 $SAMPLE.TRIM.*.R2.fq.gz \
+        -1 $SAMPLE.TRIM*.R1.fq.gz \
+        -2 $SAMPLE.TRIM*.R2.fq.gz \
         -p 32 --gcBias --seqBias --output ${SALMON_OUT}/salmon_${SAMPLE}/$SAMPLE 2>&1 | tee -a $OUTFILE_SALMON
         echo ""
 
