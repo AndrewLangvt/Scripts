@@ -22,7 +22,6 @@ def read_gff(filename):
 
         attribute = str(column[2])
         if attribute == "exon" : 
-           gbank = re.search(".*GeneID:(.*?),", column[8])
            gbank = re.search("ID=(.*?)-mRNA-", column[8])
            trans = re.search("ID=(.*?):", column[8])
            if gbank:
