@@ -14,9 +14,10 @@ for i in $(ls $star_loc/*_STAR2_Aligned.sortedByCoord.out.bam); do
 
         java -jar /pylon2/mc3bg6p/al2025/storage/QoRTs.jar QC \
         --stranded \
+        --genomeFA /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/GCA_001887795.1_colLiv2_genomic.fna \
         --rawfastq /pylon2/mc3bg6p/al2025/stress_study/cor_reads/$SAMPLE.R1.cor.fq.gz,/pylon2/mc3bg6p/al2025/stress_study/cor_reads/$SAMPLE.R2.cor.fq.gz \
         /pylon2/mc3bg6p/al2025/isoform/STAR_analysis/STAR_mappings/${SAMPLE}_STAR2_Aligned.sortedByCoord.out.bam \
-        /pylon2/mc3bg6p/al2025/isoform/genome_compare/GCF_000337935.1_Cliv_1.0_genomic.gtf \
+        /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.gtf \
         /pylon2/mc3bg6p/al2025/isoform/JunctionSeq_analysis/qorts_files/rawCts/$SAMPLE 
 done
 
