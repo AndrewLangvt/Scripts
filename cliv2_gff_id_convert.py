@@ -11,6 +11,8 @@
 # is then written back into the gff file, and a new GFF is saved with a "convertedIDs.gff."
 
 import sys
+import io
+import gzip
 import re
 
 def convert_RNA_ENTREZ(file1):
@@ -18,8 +20,8 @@ def convert_RNA_ENTREZ(file1):
 	# ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2accession.gz
 	# It will then generate a dictionary where the RNA accession number is
 	# the key, while the ENTREZ ID and gene abbreviation are the values
-	
-    convert_file = open(file1, "r")
+
+    convert_file = io.TextIOWrapper(io.BufferedReader(gzip.open(file1)))
     convert_dict = {}
     for line in convert_file:
         column = line.rstrip().split("\t")
@@ -29,7 +31,8 @@ def convert_RNA_ENTREZ(file1):
         dict_val = str(entrezID + " " + gene_name)
 	
         convert_dict[rnaID]=dict_val
-        
+
+    convert_file.close()    
     return convert_dict
 
 def blast_convert_ID_RNA(file2):
@@ -48,6 +51,7 @@ def blast_convert_ID_RNA(file2):
 
         blast_dict[MAKERmRNAid] = rnaID
 
+    blast_file.close()
     return blast_dict
 
 def gff_add_annotation(old_gff, ID_conversion_file, BLAST_file):
@@ -91,6 +95,8 @@ def gff_add_annotation(old_gff, ID_conversion_file, BLAST_file):
             continue
 
     outfile.write(gff)
+    outfile.close()
+    gff_file.close()
 
 if __name__ == '__main__':
     gff_file = sys.argv[1]
