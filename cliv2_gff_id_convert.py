@@ -82,9 +82,13 @@ def gff_add_annotation(old_gff, ID_conversion_file, BLAST_file):
             if mRNAid_match:
                 mRNAid = mRNAid_match.group(1)
                 rna_accession = BLAST_dict[mRNAid]			# Converting mRNA ID to RNA accession
-                RNA_ENTREZ = RNA_ENTREZ_dict[rna_accession].split(" ")	
-                entrezID = RNA_ENTREZ[0]				# Splitting values (entrezID & gene abb.)
-                gene = RNA_ENTREZ[1]					# from the conversion dictionary
+		if rna_accession in RNA_ENTREZ_dict.keys():
+                    RNA_ENTREZ = RNA_ENTREZ_dict[rna_accession].split(" ")	
+                    entrezID = RNA_ENTREZ[0]				# Splitting values (entrezID & gene abb.)
+                    gene = RNA_ENTREZ[1]				# from the conversion dictionary
+		else:
+		    entrezID = "absent_entrezID"
+                    gene = "absent_geneID"
                 feature_line = "gene_id=" + entrezID + ";transcript_id=" + rna_accession + ";geneName=" + gene + ";" + column[8] + "\n"
             else:
                 feature_line = column[8] + "\n"
