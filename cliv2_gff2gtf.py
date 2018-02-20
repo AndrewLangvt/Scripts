@@ -40,7 +40,7 @@ def read_gff(filename):
             first_cols = "\t".join(column[0:8])
             last_col = 'gene_id "' + gen_id + '"; ' + 'transcript_id "' + trans_id + '"; gene_abbrev=' + gname + '; gnomeID=' + locusID 
           
-            gtf += first_cols + "\t" + last_col
+            gtf += first_cols + "\t" + last_col + '\n'
 
         else:
             continue   
