@@ -27,11 +27,14 @@ def read_gff(filename):
             gene = re.search("geneName=(.*?);", column[8])
             old_id = re.search("ID=(.*?);", column[8])
            
-            if gbank:
+            if gbank:    
                 gen_id = gbank.group(1)
-                trans_id = trans.group(1)
-                gname = gene.group(1)
-                locusID = old_id.group(1)
+                if str(gen_id) != "absent_entrezID":
+                    trans_id = trans.group(1)
+                    gname = gene.group(1)
+                    locusID = old_id.group(1)
+                else:
+                    continue
             else:          
                 continue                  
 
