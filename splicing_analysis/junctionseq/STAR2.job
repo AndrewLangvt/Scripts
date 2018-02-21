@@ -1,12 +1,26 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -p LM
+#SBATCH --mem=1200G
+#SBATCH -t 336:00:00
+#SBATCH --workdir="/pylon2/mc3bg6p/al2025/isoform/STAR_analysis/STAR_mappings"
+#SBATCH --mail-user=al2025@wildcats.uhn.edu
+#SBATCH --mail-type=ALL
+#echo commands to stdout
+
+cd /pylon2/mc3bg6p/al2025/isoform/STAR_analysis/STAR_mappings
+
+LOOK_LOC=/pylon2/mc3bg6p/al2025/parental_study/trim_cor_reads
+
 SJ_LIST=""
 for i in $(ls *SJ.out.tab); do
 
         SJ_LIST+="$i "
 done
 
-for i in $(ls $LOOK_LOC/*.TRIM.R1.fq.gz); do
+for i in $(ls $LOOK_LOC/*.TRIM*R1.fq.gz); do
 
-        READ=$(basename -s .TRIM.R1.fq.gz $i)
+        READ=$(basename $i | sed 's/.TRIM*R1.fq.gz//')
         STAR_OUT2=${READ}_STAR2_
         BAM_OUT=${READ}_filtered
 
@@ -18,8 +32,8 @@ for i in $(ls $LOOK_LOC/*.TRIM.R1.fq.gz); do
 
         STAR --runMode alignReads \
         --genomeDir /pylon2/mc3bg6p/al2025/isoform/STAR_analysis/v2_STAR_indices \
-        --readFilesIn $LOOK_LOC/$READ.TRIM.R1.fq.gz $LOOK_LOC/$READ.TRIM.R2.fq.gz \
-        --sjdbGTFfile /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.gtf \
+        --readFilesIn $LOOK_LOC/$READ.TRIM*R1.fq.gz $LOOK_LOC/$READ.TRIM*R2.fq.gz \
+        --sjdbGTFfile /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.convertedIDs.gtf \
         --sjdbOverhang 124 \
         --sjdbFileChrStartEnd $SJ_LIST\
         --outFilterScoreMinOverLread 0 \
