@@ -1,0 +1,100 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -p LM
+#SBATCH --mem=1500G
+#SBATCH -t 336:00:00
+#SBATCH --workdir="/pylon2/mc3bg6p/al2025/isoform/whippet_analysis/"
+#SBATCH --mail-user=al2025@wildcats.uhn.edu
+#SBATCH --mail-type=ALL
+#echo commands to stdout
+
+cd /pylon2/mc3bg6p/al2025/isoform/whippet_analysis/
+
+READ_LOC=/pylon2/mc3bg6p/al2025/isoform/subset
+
+for i in $(ls $READ_LOC/*TRIM.R1.fq.gz); do
+
+        SAMPLE=$(basename $i | sed 's/.TRIM*R1.fq.gz')
+        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        echo mapping $SAMPLE
+        echo ""
+        julia /opt/packages/whippet/Whippet.jl-0.8/bin/whippet-quant.jl \
+        --index /pylon2/mc3bg6p/al2025/isoform/whippet_analysis/index/ColLiv_v2 \
+        --out /pylon2/mc3bg6p/al2025/isoform/whippet_analysis/quant/$SAMPLE \
+        --mismatches 2 \
+        --score-min 0 \
+        --phred-33 \
+        --circ \
+        $READ_LOC/$SAMPLE.TRIM*R1.fq.gz $READ_LOC/$SAMPLE.TRIM*R2.fq.gz
+        echo ""
+        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        echo ""
+done
+
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male female
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male*stress male*control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female*stress female*control
+echo ""
+
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh hypothalamus_control pituitary_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh hypothalamus_control gonad_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh pituitary_control gonad_control
+echo ""
+
+## Between sex, within tissue and treatment comparison
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_control female_hypothalamus_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_control female_pituitary_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_control female_gonad_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_stress female_hypothalamus_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_stress female_pituitary_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_stress female_gonad_stress
+echo ""
+
+## Between treatment, within sex and tissue comparison
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_control male_hypothalamus_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_control male_pituitary_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_control male_gonad_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_control female_hypothalamus_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_pituitary_control female_pituitary_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_gonad_control female_gonad_stress
+echo ""
+
+## Between tissue, within sex and treatment comparison
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_control male_gonad_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_control male_pituitary_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_control male_gonad_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_stress male_gonad_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_stress male_pituitary_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_stress male_gonad_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_control female_gonad_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_control female_pituitary_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_pituitary_control female_gonad_control
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_stress female_gonad_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_stress female_pituitary_stress
+echo ""
+sh /pylon2/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_pituitary_stress female_gonad_stress
+echo ""
