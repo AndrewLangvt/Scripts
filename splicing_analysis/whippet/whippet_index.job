@@ -1,7 +1,17 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -p LM
+#SBATCH --mem=1500G
+#SBATCH -t 8:00:00
+#SBATCH --workdir="/pylon2/mc3bg6p/al2025/isoform/whippet_analysis/"
+#SBATCH --mail-user=al2025@wildcats.uhn.edu
+#SBATCH --mail-type=ALL
+#echo commands to stdout
+
 # Generates indices for desired genome. I generally have this in the job 
 # submission file just preceeding the whippet-quant step
 
 julia /opt/packages/whippet/Whippet.jl-0.8/bin/whippet-index.jl \
 --fasta /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/GCA_001887795.1_colLiv2_genomic.fna \
---gtf /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.gtf \
+--gtf /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.convertedIDs.gtf \
 --index /pylon2/mc3bg6p/al2025/isoform/whippet_analysis/index/ColLiv_v2
