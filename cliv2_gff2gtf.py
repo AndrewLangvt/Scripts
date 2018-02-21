@@ -29,7 +29,7 @@ def read_gff(filename):
            
             if gbank:    
                 gen_id = gbank.group(1)
-                if str(gen_id) != "absent_entrezID":
+                if str(gen_id) != "absent_entrezID":  # This line skips over any gff annotations that did not have blast hits
                     trans_id = trans.group(1)
                     gname = gene.group(1)
                     locusID = old_id.group(1)
