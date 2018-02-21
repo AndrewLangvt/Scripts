@@ -10,7 +10,7 @@
 
 cd /pylon2/mc3bg6p/al2025/isoform/whippet_analysis/
 
-READ_LOC=/pylon2/mc3bg6p/al2025/isoform/subset
+READ_LOC=/pylon2/mc3bg6p/al2025/parental_study/trim_cor_reads
 
 for i in $(ls $READ_LOC/*TRIM.R1.fq.gz); do
 
