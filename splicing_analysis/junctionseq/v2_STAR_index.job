@@ -1,0 +1,17 @@
+
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -p LM
+#SBATCH --mem=1200G
+#SBATCH -t 48:00:00
+#SBATCH --workdir="/pylon2/mc3bg6p/al2025/isoform/STAR_analysis/STAR_mappings"
+#SBATCH --mail-user=al2025@wildcats.uhn.edu
+#SBATCH --mail-type=ALL
+#echo commands to stdout
+
+mkdir /pylon2/mc3bg6p/al2025/isoform/STAR_analysis/v2_STAR_indices
+
+STAR --runMode genomeGenerate --genomeDir /pylon2/mc3bg6p/al2025/isoform/STAR_analysis/v2_STAR_indices \
+--genomeFastaFiles /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/GCA_001887795.1_colLiv2_genomic.fna \
+--sjdbGTFfile /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.convertedIDs.gtf \
+--sjdbOverhang 124
