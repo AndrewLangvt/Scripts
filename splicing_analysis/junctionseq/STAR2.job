@@ -20,7 +20,7 @@ done
 
 for i in $(ls $LOOK_LOC/*.TRIM*R1.fq.gz); do
 
-        READ=$(basename $i | sed 's/.TRIM*R1.fq.gz//')
+        READ=$(basename $i | sed 's/.TRIM.*R1.fq.gz//')
         STAR_OUT2=${READ}_STAR2_
         BAM_OUT=${READ}_filtered
 
