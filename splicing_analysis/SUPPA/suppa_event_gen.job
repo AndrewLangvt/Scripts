@@ -1,0 +1,16 @@
+#!/bin/bash                                                                                                                                                                                                                                                                   
+#SBATCH -N 1                                                                                                                                                                                                                                                                  
+#SBATCH -p LM                                                                                                                                                                                                                                                                 
+#SBATCH --mem=1000G                                                                                                                                                                                                                                                           
+#SBATCH -t 36:00:00                                                                                                                                                                                                                                                           
+#SBATCH --workdir="/pylon2/mc3bg6p/al2025/isoform/SUPPA/"                                                                                                                                                                                                                     
+#SBATCH --mail-user=al2025@wildcats.uhn.edu                                                                                                                                                                                                                                   
+#SBATCH --mail-type=ALL                                                                                                                                                                                                                                                       
+#echo commands to stdout                                                                                                                                                                                                                                                      
+
+cd /pylon2/mc3bg6p/al2025/isoform/SUPPA/
+
+python3 /pylon2/mc3bg6p/al2025/storage/SUPPA-master/suppa.py generateEvents \
+-i /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.convertedIDs.gtf \
+-o /pylon2/mc3bg6p/al2025/isoform/SUPPA/ColLiv_V2_events \
+-e SE SS MX RI FL -p
