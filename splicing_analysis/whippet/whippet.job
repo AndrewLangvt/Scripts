@@ -14,7 +14,7 @@ READ_LOC=/pylon2/mc3bg6p/al2025/parental_study/trim_cor_reads
 
 for i in $(ls $READ_LOC/*TRIM.R1.fq.gz); do
 
-        SAMPLE=$(basename $i | sed 's/.TRIM*R1.fq.gz')
+        SAMPLE=$(basename $i | sed 's/.TRIM*R1.fq.gz//')
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo mapping $SAMPLE
         echo ""
