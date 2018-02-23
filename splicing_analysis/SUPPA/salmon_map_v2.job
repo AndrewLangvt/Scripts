@@ -24,7 +24,7 @@ mkdir ${SALMON_OUT}
 
 for i in $(ls $READ_LOC/*TRIM*R1.fq.gz); do
 
-        SAMPLE=$(basename $i | sed 's/.*TRIM.*R1.fq.gz//')
+        SAMPLE=$(basename $i | sed 's/.TRIM.*R1.fq.gz//')
         OUTFILE_SALMON=${SAMPLE}_v1_maps.txt
         mkdir ${SALMON_OUT}/salmon_${SAMPLE}_v1
 
