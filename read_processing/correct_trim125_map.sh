@@ -37,8 +37,8 @@ for LIST in "${READ_SETS[@]}";
         RREADS_LIST=""
 
         for READ in $LIST; do
-                LREADS_LIST+=${READ}.R1.fastq.gz,
-                RREADS_LIST+=${READ}.R2.fastq.gz,
+                LREADS_LIST+=`ls ${READ}.*R1.fastq.gz`,
+                RREADS_LIST+=`ls ${READ}.*R2.fastq.gz`,
         done
 
 	#trimming the comma off the end of the list
