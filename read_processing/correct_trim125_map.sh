@@ -12,7 +12,7 @@ PIGEON_ASSEMBLY=/pylon2/mc3bg6p/al2025/parental_assembly/RockDove.HPG.v1.1.1.fas
 SALMON_DIR=/pylon2/mc3bg6p/al2025/storage/salmon-0.8.2/bin
 SALMON_INDEX=/pylon2/mc3bg6p/al2025/mapping_indices/salmon_index/HPG_parental_index
 
-ID_LIST=`ls -l *fastq.gz | awk '{print $9}' | sed 's/[\.]R[1-2][\.].*//g;s/.*[\/]//g' | sort -u`
+ID_LIST=`ls -l *fastq.gz | awk '{print $9}' | sed 's/[\.]R[1-2][\.].*//g;s/.NYNO*//;s/.*[\/]//g' | sort -u`
 
 IFS=' ' read -r -a LIST_ARRAY <<< $ID_LIST
 
