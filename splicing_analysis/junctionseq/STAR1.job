@@ -35,4 +35,7 @@ for i in $(ls $LOOK_LOC/*.TRIM*R1.fq.gz); do
         --readFilesCommand zcat \
         --runThreadN 70 \
         --outFileNamePrefix $STAR_OUT
+        
+        rm ${STAR_OUT}Aligned.sortedByCoord.out.bam
+        rm -rf ${STAR_OUT}_STARtmp
 done
