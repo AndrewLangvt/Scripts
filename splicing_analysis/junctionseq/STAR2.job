@@ -36,6 +36,7 @@ for i in $(ls $LOOK_LOC/*.TRIM*R1.fq.gz); do
         --sjdbGTFfile /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.convertedIDs.gtf \
         --sjdbOverhang 124 \
         --sjdbFileChrStartEnd $SJ_LIST\
+        --limitSjdbInsertNsj 4000000 \
         --outFilterScoreMinOverLread 0 \
         --outFilterMatchNminOverLread 0 \
         --outFilterMismatchNmax 2 \
