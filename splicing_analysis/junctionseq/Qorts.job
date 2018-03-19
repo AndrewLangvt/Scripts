@@ -3,14 +3,14 @@
 #SBATCH -p LM
 #SBATCH --mem=1500G
 #SBATCH -t 336:00:00
-#SBATCH --workdir="/pylon2/mc3bg6p/al2025/isoform/JunctionSeq_analysis"
+#SBATCH --workdir="/pylon5/mc3bg6p/al2025/isoform/JunctionSeq_analysis"
 #SBATCH --mail-user=al2025@wildcats.uhn.edu
 #SBATCH --mail-type=ALL
 #echo commands to stdout
 
-cd /pylon2/mc3bg6p/al2025/isoform/JunctionSeq_analysis
+cd /pylon5/mc3bg6p/al2025/isoform/JunctionSeq_analysis
 
-star_loc=/pylon2/mc3bg6p/al2025/isoform/STAR_analysis/STAR_mappings
+star_loc=/pylon5/mc3bg6p/al2025/isoform/STAR_analysis/STAR_mappings/replace
 
 for i in $(ls $star_loc/*_STAR2_Aligned.sortedByCoord.out.bam); do
 
@@ -21,12 +21,14 @@ for i in $(ls $star_loc/*_STAR2_Aligned.sortedByCoord.out.bam); do
         echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         echo ""
 
-        java -jar /pylon2/mc3bg6p/al2025/storage/QoRTs.jar QC \
+        java -jar /pylon5/mc3bg6p/al2025/storage/QoRTs.jar QC \
         --stranded \
-        --genomeFA /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/GCA_001887795.1_colLiv2_genomic.fna \
-        --rawfastq /pylon2/mc3bg6p/al2025/parental_study/$SAMPLE.R1.fastq.gz,/pylon2/mc3bg6p/al2025/parental_study/$SAMPLE.R2.fastq.gz \
-        /pylon2/mc3bg6p/al2025/isoform/STAR_analysis/STAR_mappings/${SAMPLE}_STAR2_Aligned.sortedByCoord.out.bam \
-        /pylon2/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.convertedIDs.gtf \
-        /pylon2/mc3bg6p/al2025/isoform/JunctionSeq_analysis/qorts_files/rawCts/$SAMPLE 
+        --genomeFA /pylon5/mc3bg6p/al2025/isoform/colLiv2_genome/GCA_001887795.1_colLiv2_genomic.fna \
+        --rawfastq /pylon5/mc3bg6p/al2025/parental_study/trim_cor_reads/replace/$SAMPLE.R1.fq.gz,\
+        /pylon5/mc3bg6p/al2025/parental_study/trim_cor_reads/replace/$SAMPLE.R2.fq.gz \
+        --outfilePrefix ${SAMPLE}_ \
+        /pylon5/mc3bg6p/al2025/isoform/STAR_analysis/STAR_mappings/replace/${SAMPLE}_STAR2_Aligned.sortedByCoord.out.bam \
+        /pylon5/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.convertedIDs.gtf \
+        /pylon5/mc3bg6p/al2025/isoform/JunctionSeq_analysis/qorts_files/rawCts/$SAMPLE 
 done
 
