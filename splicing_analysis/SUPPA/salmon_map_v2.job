@@ -23,20 +23,26 @@ mkdir ${SALMON_OUT}
 
 
 for i in $(ls $READ_LOC/*TRIM*R1.fq.gz); do
-
         SAMPLE=$(basename $i | sed 's/.TRIM.*R1.fq.gz//')
-        OUTFILE_SALMON=${SAMPLE}_v1_maps.txt
-        mkdir ${SALMON_OUT}/salmon_${SAMPLE}_v2
 
-        $SALMON_DIR/salmon quant -i $SALMON_INDEX -l A \
-        -1 $READ_LOC/$SAMPLE.TRIM*R1.fq.gz \
-        -2 $READ_LOC/$SAMPLE.TRIM*R2.fq.gz \
-        -p 32 --gcBias --seqBias --output ${SALMON_OUT}/salmon_${SAMPLE}_v2/${SAMPLE}_v2 2>&1 | tee -a $OUTFILE_SALMON
-        echo ""
+        if test -f $SALMON_OUT/salmon_${SAMPLE}_v2/${SAMPLE}_v2/quant.sf; then
+	    echo Mapping file for $SAMPLE already complete. Moving to next sample. 
+            continue
+        else
+            OUTFILE_SALMON=${SAMPLE}_v2_maps.txt
+            rm -rf ${SALMON_OUT}/salmon_${SAMPLE}_v2
+            mkdir ${SALMON_OUT}/salmon_${SAMPLE}_v2
 
-        cat $OUTFILE_SALMON >> ${DATA}_mapping_output.txt
-        echo "" >> ${DATA}_mapping_output.txt
-        rm $OUTFILE_SALMON
+            $SALMON_DIR/salmon quant -i $SALMON_INDEX -l A \
+		-1 $READ_LOC/$SAMPLE.TRIM*R1.fq.gz \
+		-2 $READ_LOC/$SAMPLE.TRIM*R2.fq.gz \
+		-p 32 --gcBias --seqBias --output ${SALMON_OUT}/salmon_${SAMPLE}_v2/${SAMPLE}_v2 2>&1 | tee -a $OUTFILE_SALMON
+            echo ""
+
+            cat $OUTFILE_SALMON >> ${DATA}_mapping_output.txt
+            echo "" >> ${DATA}_mapping_output.txt
+            rm $OUTFILE_SALMON
+	fi 
 done
 
 mv ${DATA}_mapping_output.txt $SALMON_OUT/
