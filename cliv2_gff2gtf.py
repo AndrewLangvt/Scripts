@@ -41,7 +41,7 @@ def read_gff(filename):
             # Formatting gene_id and transcript_id
 
             first_cols = "\t".join(column[0:8])
-            last_col = 'gene_id "' + gen_id + '"; ' + 'transcript_id "' + trans_id + '"; gene_abbrev=' + gname + '; gnomeID=' + locusID 
+            last_col = 'gene_id "' + gen_id + '"; ' + 'transcript_id "' + trans_id + '"; gene_abbrev ' + gname + '; gnomeID ' + locusID 
           
             gtf += first_cols + "\t" + last_col + '\n'
 
