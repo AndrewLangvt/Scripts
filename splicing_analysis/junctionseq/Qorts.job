@@ -25,7 +25,7 @@ for i in $(ls $star_loc/*_STAR2_Aligned.sortedByCoord.out.bam); do
         --stranded \
         --maxReadLength 125 \
         --genomeFA /pylon5/mc3bg6p/al2025/isoform/colLiv2_genome/GCA_001887795.1_colLiv2_genomic.fna \
-        --rawfastq /pylon5/mc3bg6p/al2025/parental_study/trim_cor_reads/replace/$SAMPLE.TRIM.R1.fq.gz,/pylon5/mc3bg6p/al2025/parental_study/trim_cor_reads/replace/$SAMPLE.TRIM.R2.fq.gz \
+        --rawfastq /pylon5/mc3bg6p/al2025/parental_study/trim_cor_reads/replace/$SAMPLE.R1.cor.fq.gz,/pylon5/mc3bg6p/al2025/parental_study/trim_cor_reads/replace/$SAMPLE.R2.cor.fq.gz \
         --outfilePrefix ${SAMPLE}_ \
         /pylon5/mc3bg6p/al2025/isoform/STAR_analysis/STAR_mappings/replace/${SAMPLE}_STAR2_Aligned.sortedByCoord.out.bam \
         /pylon5/mc3bg6p/al2025/isoform/colLiv2_genome/Rockdove_cliv2.convertedIDs.gtf \
