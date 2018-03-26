@@ -1,7 +1,7 @@
 # sig_events_genes.py
 # Andrew S. Lang
 # Created: 23MAR2018
-# Last Modified: 23MAR2018
+# Last Modified: 26MAR2018
 
 # This script will take an input diff.gz file from whippet, and write all of the genes in which significant 
 # splicing events (prob > 0.95) occur
@@ -38,7 +38,7 @@ def sig_ev(fname):
         for gene in spliced_genes_list:
             spliced_genes += gene + "\n"
 
-        outfile.write(name_trimmed + "\n" + spliced_genes)
+        outfile.write("Analysis:Whippet " + name_trimmed + "\n" + spliced_genes)
         outfile.close()
 
 if __name__ == '__main__':
