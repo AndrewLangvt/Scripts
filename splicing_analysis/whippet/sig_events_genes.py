@@ -27,11 +27,11 @@ def sig_ev(fname):
             psi = abs(float(column[7]))
 
             if prob >= float(0.95) :
-                if psi >= float(0.1) :
+#                if psi >= float(0.1) :
                     if geneID not in spliced_genes_list:
                         spliced_genes_list.append(geneID)
-                else:
-                    continue
+#                else:
+#                    continue
             else:
                 continue
 
