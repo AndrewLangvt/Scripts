@@ -4,7 +4,7 @@
 # Last Modified: 26MAR2018
 
 # This script will take an input SAMPLE.dpsi file from SUPPA, and spit out all of the genes in which significant 
-# splicing events (p_val < 0.05 and psi > 0.1) occur
+# splicing events (p_val < 0.05) occur
 
 import re
 import sys
@@ -26,7 +26,8 @@ def sig_ev(fname):
         pval = float(column[2])
         psi = abs(float(column[1]))
       
-        if pval <= float(0.05) and psi >= 0.1 :
+        if pval <= float(0.05) :
+#        if pval <= float(0.05) and psi >= 0.1 :
             if "_and_" in geneID:
                 mult_IDs = geneID.rstrip().split("_and_")                                 # some of the output from SUPPA contains gene1_and_gene2, splitting them                 
                 for singleID in mult_IDs:
