@@ -1,0 +1,152 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -p LM
+#SBATCH --mem=1500G
+#SBATCH -t 24:00:00
+#SBATCH --workdir="/pylon5/mc3bg6p/al2025/isoform/whippet_analysis/"
+#SBATCH --mail-user=al2025@wildcats.uhn.edu
+#SBATCH --mail-type=ALL
+#echo commands to stdout
+
+cd /pylon5/mc3bg6p/al2025/isoform/whippet_analysis/
+
+# Control to Stress within sex
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_control male_hypothalamus_stress
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_control female_hypothalamus_stress
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_control male_pituitary_stress
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_pituitary_control female_pituitary_stress
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_control male_gonad_stress
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_gonad_control female_gonad_stress
+echo ""
+
+# Stress Male vs Female
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_stress female_hypothalamus_stress
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_stress female_pituitary_stress
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_stress female_gonad_stress
+echo ""
+
+# Control Male vs Female
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_control female_hypothalamus_control
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_control female_pituitary_control
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_control female_gonad_control
+echo ""
+
+# Building Male vs Female
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_bldg female_hypothalamus_bldg
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_bldg female_pituitary_bldg
+echo ""
+
+# Nesting Male vs Female
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_n[0-9] female_hypothalamus_n[0-9]
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_n[0-9] female_pituitary_n[0-9]
+echo ""
+
+# Lay Male vs Female
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_lay female_hypothalamus_lay
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_lay female_pituitary_lay
+echo ""
+
+# Inc Male vs Female 
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_inc female_hypothalamus_inc
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_inc female_pituitary_inc
+echo ""
+
+# Hatch Male vs Female 
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_hatch female_hypothalamus_hatch
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_hatch female_pituitary_hatch
+echo ""
+
+# Control to Bulding Transition
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_control male_hypothalamus_bldg
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_control male_pituitary_bldg
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_control male_gonad_bldg
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_control female_hypothalamus_bldg
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_pituitary_control female_pituitary_bldg
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_gonad_control female_gonad_bldg
+
+# Bulding to Nesting Transition
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_bldg male_hypothalamus_n[0-9]
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_bldg male_pituitary_n[0-9]
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_bldg male_gonad_n[0-9]
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_bldg female_hypothalamus_n[0-9]
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_pituitary_bldg female_pituitary_n[0-9]
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_gonad_bldg female_gonad_n[0-9]
+echo ""
+
+# Nesting to Lay Transition                                                                                                                                                   
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_n[0-9] male_hypothalamus_lay
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_n[0-9] male_pituitary_lay
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_n[0-9] male_gonad_lay
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_n[0-9] female_hypothalamus_lay
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_pituitary_n[0-9] female_pituitary_lay
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_gonad_n[0-9] female_gonad_lay
+echo ""
+
+# Lay to Inc Transition                                                                                                                                                       
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_lay male_hypothalamus_inc
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_lay male_pituitary_inc
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_lay male_gonad_inc
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_lay female_hypothalamus_inc
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_pituitary_lay female_pituitary_inc
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_gonad_lay female_gonad_inc
+
+# Inc to Hatch Transition
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_hypothalamus_inc male_hypothalamus_hatch
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_pituitary_inc male_pituitary_hatch
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh male_gonad_inc male_gonad_hatch
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_hypothalamus_inc female_hypothalamus_hatch
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_pituitary_inc female_pituitary_hatch
+echo ""
+sh /pylon5/mc3bg6p/al2025/storage/data_mgmt_files/whippet_delta.sh female_gonad_inc female_gonad_hatch
+
