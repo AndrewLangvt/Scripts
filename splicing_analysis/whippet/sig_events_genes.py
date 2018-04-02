@@ -35,7 +35,7 @@ def sig_ev(fname):
             else:
                 continue
 
-        outfile.write("Analysis:Whippet " + name_trimmed + "Event_Loci" + "\n" + spliced_genes)
+        outfile.write("Analysis:Whippet " + name_trimmed + "\t" + "Event_Loci" + "\n" + spliced_genes)
         outfile.close()
 
 if __name__ == '__main__':
