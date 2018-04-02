@@ -4,7 +4,7 @@
 # Last Modified: 02APR2018
 
 # This script will take an input diff.gz file from whippet, and write all of the genes in which significant 
-# splicing events (prob > 0.95) occur
+# splicing events (prob > 0.95 and abs(PSI)>=0.1) occur
 
 import re
 import sys
