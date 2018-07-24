@@ -1,3 +1,5 @@
+#! /usr/bin/env python3 
+
 # exon_extract.py
 # Andrew S. Lang
 # Created: 16JUL2018
