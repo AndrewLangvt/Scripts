@@ -6,7 +6,7 @@
 # Last Modified: 24JUL2018
 
 # This script simply re-inputs the meta data from whippet output into a MotifFinder output file. 
-# inputs include 1) Whippet diff.gz file
+# inputs include 1) Whippet sig events file
 #                2) MotifFinder spreadsheet file
 
 import sys
