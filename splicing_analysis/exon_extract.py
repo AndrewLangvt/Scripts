@@ -57,7 +57,14 @@ def excise_exons(genomeFile, exonF):                         # Excises the exoni
         stop = int(loc.split("-")[1])
         exon_seq = str(gen_dict[chrom][start-1:stop:])       # Due to pythonic indexing, subtracting 1 from start index to capture that base
         exonID = str.join(':',(chrom, str(start)))
-        exon_dict[exonID] = (exon_seq, sample)
+        if exonID not in exon_dict.keys():
+            exon_dict[exonID] = [exon_seq, sample]
+        else:
+            cur_samp = []
+            seq = str(exon_dict[exonID][0])
+            cur_entry = exon_dict[exonID]
+            cur_entry.append(sample)
+            exon_dict[exonID] = cur_entry
 #        print('{}\t{}\t{}\t{}\t{}'.format(exonID, start, stop, exon_seq, sample))
 #    for key,value in exon_dict.items():
 #        print('{}\t{}\t{}'.format(key, value[0], value[1]))
@@ -100,16 +107,12 @@ def translate_exons(genomeFile, genomeGFF, exonF, outfile):           # Translat
     exon_seqs = excise_exons(genomeFile, exonF)
     exon_info = gff_read(genomeGFF)
     trans_fasta = []
-    fastafile_name = outfile + ".fasta"
-    spreadsheet_name = outfile + "_exon_sheet.tsv"
-    fastafile = open(fastafile_name, "w")
-    spreadsheet = open(spreadsheet_name, "w")
     fasta_str = ""
     spreadsheet_str = "Exon ID\tExon\tCDS\t5UTR\t3UTR\tSeq Length\n"
 
     for exon in exon_seqs.keys():
 
-        exon_info[exon].sampleType = exon_seqs[exon][1]
+        exon_info[exon].sampleType = exon_seqs[exon][1:]
 
         if exon_info[exon].strand == "+":                    # Identifying which strand to translate
             exon_info[exon].seq = Seq(exon_seqs[exon][0], generic_dna)  
@@ -127,15 +130,20 @@ def translate_exons(genomeFile, genomeGFF, exonF, outfile):           # Translat
             elif exon_info[exon].phase == "2":
                 exon_info[exon].inframe_seq = exon_info[exon].seq[2:len(exon_info[exon].seq)-1]
             exon_info[exon].trans = exon_info[exon].inframe_seq.translate(to_stop=True)
-            fasta_str += ">{}\n{}\n".format(exon, exon_info[exon].trans)
-
-        spreadsheet_str += "{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(exon_info[exon].sampleType, exon_info[exon].chromStart, exon_info[exon].is_exon, exon_info[exon].is_cds, exon_info[exon].is_5UTR, exon_info[exon].is_3UTR, len(exon_info[exon].inframe_seq))
+            fasta_str += ">{}\n{}\n".format(exon, exon_info[exon].trans
+        for sample in exon_info[exon].sampleType:
+            spreadsheet_str += "{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(exon_info[exon].sampleType, exon_info[exon].chromStart, exon_info[exon].is_exon, exon_info[exon].is_cds, exon_info[exon].is_5UTR, exon_info[exon].is_3UTR, len(exon_info[exon].inframe_seq))
 
 #        print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(exon_info[exon].sampleType, exon_info[exon].chromStart, exon_info[exon].is_exon, exon_info[exon].is_cds, exon_info[exon].is_5UTR, exon_info[exon].is_3UTR, len(exon_info[exon].inframe_seq), exon_info[exon].trans))
 #    print(fasta_str)
 #    print("\n")
 #    print(spreadsheet_str)
 
+    fastafile_name = outfile + ".fasta"
+    spreadsheet_name = outfile + "_exon_sheet.tsv"
+    fastafile = open(fastafile_name, "w")
+    spreadsheet = open(spreadsheet_name, "w")
+                                            
     fastafile.write(fasta_str)
     fastafile.close()
     spreadsheet.write(spreadsheet_str)
