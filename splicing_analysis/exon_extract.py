@@ -108,7 +108,7 @@ def translate_exons(genomeFile, genomeGFF, exonF, outfile):           # Translat
     exon_info = gff_read(genomeGFF)
     trans_fasta = []
     fasta_str = ""
-    spreadsheet_str = "Exon ID\tExon\tCDS\t5UTR\t3UTR\tSeq Length\n"
+    spreadsheet_str = "Sample\tExonID\tExon\tCDS\t5UTR\t3UTR\tLength\n"
 
     for exon in exon_seqs.keys():
 
@@ -132,7 +132,7 @@ def translate_exons(genomeFile, genomeGFF, exonF, outfile):           # Translat
             exon_info[exon].trans = exon_info[exon].inframe_seq.translate(to_stop=True)
             fasta_str += ">{}\n{}\n".format(exon, exon_info[exon].trans
         for sample in exon_info[exon].sampleType:
-            spreadsheet_str += "{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(exon_info[exon].sampleType, exon_info[exon].chromStart, exon_info[exon].is_exon, exon_info[exon].is_cds, exon_info[exon].is_5UTR, exon_info[exon].is_3UTR, len(exon_info[exon].inframe_seq))
+            spreadsheet_str += "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\n".format(name, sample, exon_info[exon].sampleType, exon_info[exon].chromStart, exon_info[exon].is_exon, exon_info[exon].is_cds, exon_info[exon].is_5UTR, exon_info[exon].is_3UTR, len(exon_info[exon].inframe_seq))
 
 #        print("{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(exon_info[exon].sampleType, exon_info[exon].chromStart, exon_info[exon].is_exon, exon_info[exon].is_cds, exon_info[exon].is_5UTR, exon_info[exon].is_3UTR, len(exon_info[exon].inframe_seq), exon_info[exon].trans))
 #    print(fasta_str)
