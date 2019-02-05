@@ -73,7 +73,7 @@ def gff_add_annotation(old_gff, ID_conversion_file, BLAST_file):
     print("Beginning to process your GFF")
     for line in gff_file:
     
-        # a boolean to determine if line contains actual features for RPASE TSV (only pulling out gene entries)
+        # a boolean to determine if line contains actual features for TSV (only pulling out gene entries)
         if bool(re.search("#.*|contig|match|match_part", line)):
             continue	 		  	    	      	              # Bypassing any lines that do not contain pertinent info
 
