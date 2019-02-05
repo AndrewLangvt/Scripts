@@ -1,0 +1,148 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH -p LM
+#SBATCH --constraint="LM"
+#SBATCH --mem=1200G
+#SBATCH -t 336:00:00
+#SBATCH --workdir="/pylon5/mc3bg6p/al2025/ase_analysis/"
+#SBATCH --mail-user=al2025@wildcats.uhn.edu
+#SBATCH --mail-type=ALL
+#echo commands to stdout
+
+cd /pylon5/mc3bg6p/al2025/ase_analysis/
+
+BAM_Loc=/pylon5/mc3bg6p/al2025/ase_analysis/bam_processing
+VCF_raw_Loc=/pylon5/mc3bg6p/al2025/ase_analysis/GATK/VCF/raw
+VCF_filt_Loc=/pylon5/mc3bg6p/al2025/ase_analysis/GATK/VCF/filtered
+VCF_HZ_Loc=/pylon5/mc3bg6p/al2025/ase_analysis/GATK/VCF/HZ_only
+RdCount_Loc=/pylon5/mc3bg6p/al2025/ase_analysis/GATK/VCF/ReadCount
+GeneiASE_in_Loc=/pylon5/mc3bg6p/al2025/ase_analysis/GeneiASE/input_files
+GeneiASE_out_Loc=/pylon5/mc3bg6p/al2025/ase_analysis/GeneiASE/output_files
+
+LOCATION=/pylon5/mc3bg6p/al2025/parental_study/trim_cor_reads/*parental/
+
+for i in $(ls $LOCATION/NAME*R1*); do
+
+    BASE_ID=$(basename $i | sed 's/.TRIM.*//')
+    STAR_BAM=${BASE_ID}_STAR2_Aligned.sortedByCoord.out.bam
+
+    #Obtaining Machine, Run, Flowcell, and Lane information from First portion of read header                                                                                                                                                                                 
+    HEADER=$(zcat $(find $LOCATION/$BASE_ID.*R1.*gz) | head -n1 | cut -d " " -f 1)
+
+    #Obtaining the first portion of the header information                                                                                                                                                                                                                    
+    MACHINE=$(echo $HEADER | cut -d ":" -f1)
+    RUN=$(echo $HEADER | cut -d ":" -f2)
+    FLOWCELL=$(echo $HEADER | cut -d ":" -f3)
+    LANE=$(echo $HEADER | cut -d ":" -f4)
+
+    #Obtaining index information from second part of header                                                                                                                                                                                                                   
+    INDEX=$(zcat $(find $LOCATION/$BASE_ID.*R1.*gz) | head -n1 | cut -d " " -f 2 | cut -d : -f 4)
+
+    #Obtaining library number from previously generated lib file. Essentially just gives single digit identifier to each library.                                                                                                                                             
+    LIB_NUM=$(grep $(echo $BASE_ID | sed 's/.NYNO//') /pylon5/mc3bg6p/al2025/ase_analysis/library_file.tsv | awk '{print $2}')
+
+    echo
+    echo "~_~_~_~_~_~_~_~_~_ Editing ReadGroups for "$BASE_ID" ~_~_~_~_~_~_~_~_~_"
+    echo
+
+    java -jar /pylon5/mc3bg6p/al2025/storage/picard.jar AddOrReplaceReadGroups \
+        INPUT=/pylon5/mc3bg6p/al2025/ase_analysis/STAR/STAR_mappings/$STAR_BAM \
+        OUTPUT=$BAM_Loc/$BASE_ID.rg_added.bam \
+        RGID=$BASE_ID.$MACHINE.$FLOWCELL.$LANE.$INDEX \
+        RGLB=$LIB_NUM \
+        RGPL=ILLUMINA \
+        RGPU=$FLOWCELL.$LANE.$INDEX \
+        RGSM=$BASE_ID
+
+    echo
+    echo
+    echo "~_~_~_~_~_~_~_~_~_ MarkingDuplicates for "$BASE_ID" ~_~_~_~_~_~_~_~_~_"
+    echo
+
+    java -jar /pylon5/mc3bg6p/al2025/storage/picard.jar MarkDuplicates \
+        INPUT=$BAM_Loc/$BASE_ID.rg_added.bam \
+        OUTPUT=$BAM_Loc/$BASE_ID.dedupped.bam \
+        CREATE_INDEX=true \
+        VALIDATION_STRINGENCY=SILENT \
+        METRICS_FILE=$BAM_Loc/$BASE_ID.dedupped.bam.metrics
+
+    echo
+    echo
+    echo "~_~_~_~_~_~_~_~_~_ SplitNCigarReads for "$BASE_ID" ~_~_~_~_~_~_~_~_~_"
+    echo
+
+    java -jar /pylon5/mc3bg6p/al2025/storage/GenomeAnalysisTK-3.8-0-ge9d806836/GenomeAnalysisTK.jar \
+        --analysis_type SplitNCigarReads \
+        --reference_sequence /pylon5/mc3bg6p/al2025/isoform/colLiv2_genome/GCA_001887795.1_colLiv2_genomic.fna \
+        --input_file $BAM_Loc/$BASE_ID.dedupped.bam \
+        --out $BAM_Loc/$BASE_ID.split.bam \
+        -U ALLOW_N_CIGAR_READS \
+        -rf ReassignOneMappingQuality -RMQF 255 -RMQT 60
+
+    echo
+    echo
+    echo "~_~_~_~_~_~_~_~_~_ HaplotypeCall VCF for "$BASE_ID" ~_~_~_~_~_~_~_~_~_~_"
+    echo
+
+    java -jar /pylon5/mc3bg6p/al2025/storage/GenomeAnalysisTK-3.8-0-ge9d806836/GenomeAnalysisTK.jar \
+        --analysis_type HaplotypeCaller \
+        --reference_sequence /pylon5/mc3bg6p/al2025/isoform/colLiv2_genome/GCA_001887795.1_colLiv2_genomic.fna \
+        --input_file $BAM_Loc/$BASE_ID.split.bam \
+        --dontUseSoftClippedBases \
+        --standard_min_confidence_threshold_for_calling 30.0 \
+        --out $VCF_raw_Loc/$BASE_ID.HTcall.vcf
+
+    echo
+    echo
+    echo "~_~_~_~_~_~_~_~_~_ VariantFiltering for "$BASE_ID" ~_~_~_~_~_~_~_~_~_"
+    echo
+
+    java -jar /pylon5/mc3bg6p/al2025/storage/GenomeAnalysisTK-3.8-0-ge9d806836/GenomeAnalysisTK.jar \
+        --analysis_type VariantFiltration \
+        --reference_sequence /pylon5/mc3bg6p/al2025/isoform/colLiv2_genome/GCA_001887795.1_colLiv2_genomic.fna \
+        --variant $VCF_raw_Loc/$BASE_ID.HTcall.vcf \
+        --filterName FS --filterExpression "FS > 30.0" \
+        --filterName QD --filterExpression "QD < 2.0" \
+        --clusterWindowSize 35 \
+        --clusterSize 3 \
+        --out $VCF_filt_Loc/$BASE_ID.HTcall.filtered.vcf
+
+    echo
+    echo "~_~_~_~_~_~_~_~_~_ Extracting HZ sites from "$BASE_ID" VCF ~_~_~_~_~_~_~_~_~_"
+    echo
+
+    python3 /pylon5/mc3bg6p/al2025/ase_analysis/HZ_extract.py \
+        -i $VCF_filt_Loc/$BASE_ID.HTcall.filtered.vcf \
+        -o $VCF_HZ_Loc/$BASE_ID.HZ_only.vcf
+
+    echo
+    echo "~_~_~_~_~_~_~_~_~_ Running ASEReadCounter for "$BASE_ID" ~_~_~_~_~_~_~_~_~_"
+    echo
+
+    java -jar /pylon5/mc3bg6p/al2025/storage/GenomeAnalysisTK-3.8-0-ge9d806836/GenomeAnalysisTK.jar \
+        --analysis_type ASEReadCounter  \
+        --reference_sequence /pylon5/mc3bg6p/al2025/isoform/colLiv2_genome/GCA_001887795.1_colLiv2_genomic.fna \
+        --input_file $BAM_Loc/$BASE_ID.split.bam \
+        --sitesVCFFile $VCF_HZ_Loc/$BASE_ID.HZ_only.vcf \
+        -U ALLOW_N_CIGAR_READS \
+        --out $RdCount_Loc/$BASE_ID.RdCt.tsv
+
+    echo
+    echo "~_~_~_~_~_~_~_~_~_ Running ReadCount_Annotate for "$BASE_ID" ~_~_~_~_~_~_~_~_~_"
+    echo
+
+    python3 /pylon5/mc3bg6p/al2025/ase_analysis/ReadCount_Annotate.py \
+        -i $RdCount_Loc/$BASE_ID.RdCt.tsv \
+        -a /pylon5/mc3bg6p/al2025/ase_analysis/Rockdove_cliv2.anno.tsv \
+        -o $GeneiASE_in_Loc/$BASE_ID.for_geneiASE.tsv
+
+    echo
+    echo "~_~_~_~_~_~_~_~_~_ Running GeneiASE for "$BASE_ID" ~_~_~_~_~_~_~_~_~_"
+    echo
+
+    /pylon5/mc3bg6p/al2025/storage/geneiase-1.0.1/bin/geneiase \
+        --ase.type static \
+        --in.file $GeneiASE_in_Loc/$BASE_ID.for_geneiASE.tsv \
+        --out.file $GeneiASE_out_Loc/$BASE_ID.geneiASE_processed.tsv
+
+done
