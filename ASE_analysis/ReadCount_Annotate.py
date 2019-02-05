@@ -41,13 +41,10 @@ def annotation_dict(Annotation_file):                    # Generating an annotat
 
         for key, value in anno_dict.items():             # Sorting dictionary to ensure loci are in sequential order
             anno_dict[key] = sorted(value)
-
     anno.close()
     return(anno_dict)
 
-
 def Add_annotation(infile, AnnotationFile, outName):     # Processing count file and adding annotation
-
     annotation = annotation_dict(AnnotationFile)
     ASE_f = open(infile, 'r')
     outfile = open(outName, 'w')
