@@ -58,7 +58,7 @@ def gff_add_annotation(old_gff, ID_conversion_file, BLAST_file):
         # to generate dictionaries and convert RNA IDs to RNA Accession numbers, Entrez Gene IDs, and gene 
         # abbreviations, ultimately generating a new, updated GFF. 
 
-    outfile_name = str(old_gff).replace("gff", "RPASE.tsv")
+    outfile_name = str(old_gff).replace("gff", "anno.tsv")
     outfile = open(outfile_name, "w")
     gff_file = open(old_gff, "r")
     gene_file = "chromosome\tgene.start\tgene.end\tgene.name\n"
