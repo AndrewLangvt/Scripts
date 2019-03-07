@@ -79,7 +79,7 @@ library(vegan)
 dist_mtrx <- vegdist(transp_ALL_ASE_byChromLoc[geneIDs], dist = 'binomial') # all columns except for the meta variables
 ```
 
-# Questions with adonis2
+## Questions with adonis2
 1) Should I be including multiple permutations with adonis2?
 2) This is probably a VERY easy answer... where is the p-value indicating a difference between my meta groups? (i.e. between sexes for the first one)
 3) I'm wondering if I have the code right for the adonis2 comparing Sex-tissue-time groups (3rd one below), as some of the values come out as NAs...
@@ -88,27 +88,27 @@ veg_permanova_sex <- adonis2(dist_mtrx ~ Time, data = transp_ALL_ASE_byChromLoc)
 summary(veg_permanova_sex)
 ```
 ```
-       Df           SumOfSqs           R2               F             Pr(>F)     
- Min.   : 8.00   Min.   :1.928   Min.   :0.2814   Min.   :2.203   Min.   :0.001  
- 1st Qu.:26.50   1st Qu.:3.425   1st Qu.:0.5000   1st Qu.:2.203   1st Qu.:0.001  
- Median :45.00   Median :4.923   Median :0.7186   Median :2.203   Median :0.001  
- Mean   :35.33   Mean   :4.567   Mean   :0.6667   Mean   :2.203   Mean   :0.001  
- 3rd Qu.:49.00   3rd Qu.:5.886   3rd Qu.:0.8593   3rd Qu.:2.203   3rd Qu.:0.001  
- Max.   :53.00   Max.   :6.850   Max.   :1.0000   Max.   :2.203   Max.   :0.001  
-                                                  NA's   :2       NA's   :2    
+       Df           SumOfSqs           R2               F           Pr(>F)    
+ Min.   : 8.00   Min.   :1.144   Min.   :0.2321   Min.   :1.7   Min.   :0.01  
+ 1st Qu.:26.50   1st Qu.:2.465   1st Qu.:0.5000   1st Qu.:1.7   1st Qu.:0.01  
+ Median :45.00   Median :3.786   Median :0.7679   Median :1.7   Median :0.01  
+ Mean   :35.33   Mean   :3.287   Mean   :0.6667   Mean   :1.7   Mean   :0.01  
+ 3rd Qu.:49.00   3rd Qu.:4.359   3rd Qu.:0.8840   3rd Qu.:1.7   3rd Qu.:0.01  
+ Max.   :53.00   Max.   :4.931   Max.   :1.0000   Max.   :1.7   Max.   :0.01  
+                                                  NA's   :2     NA's   :2  
 ```
 ```
 veg_permanova_sex_tiss <- adonis2(dist_mtrx ~ Sex * Tissue, data = transp_ALL_ASE_byChromLoc) # testing for interactions between multiple meta variables
 summary(veg_permanova_sex_tiss)
 ```
 ```       Df          SumOfSqs            R2                F              Pr(>F)     
- Min.   : 1.0   Min.   :0.4448   Min.   :0.06493   Min.   : 3.844   Min.   :0.001  
- 1st Qu.: 2.0   1st Qu.:0.6175   1st Qu.:0.09014   1st Qu.: 4.690   1st Qu.:0.001  
- Median : 2.0   Median :1.9325   Median :0.28210   Median : 5.537   Median :0.001  
- Mean   :21.2   Mean   :2.7401   Mean   :0.40000   Mean   : 7.137   Mean   :0.001  
- 3rd Qu.:48.0   3rd Qu.:3.8556   3rd Qu.:0.56283   3rd Qu.: 8.783   3rd Qu.:0.001  
- Max.   :53.0   Max.   :6.8503   Max.   :1.00000   Max.   :12.029   Max.   :0.001  
-                                                   NA's   :2        NA's   :2
+ Min.   : 1.0   Min.   :0.2231   Min.   :0.04525   Min.   : 3.665   Min.   :0.001000  
+ 1st Qu.: 2.0   1st Qu.:0.4541   1st Qu.:0.09209   1st Qu.: 3.697   1st Qu.:0.001000  
+ Median : 2.0   Median :1.3314   Median :0.27002   Median : 3.729   Median :0.001000  
+ Mean   :21.2   Mean   :1.9723   Mean   :0.40000   Mean   : 6.110   Mean   :0.002667  
+ 3rd Qu.:48.0   3rd Qu.:2.9222   3rd Qu.:0.59265   3rd Qu.: 7.332   3rd Qu.:0.003500  
+ Max.   :53.0   Max.   :4.9307   Max.   :1.00000   Max.   :10.935   Max.   :0.006000  
+                                                   NA's   :2        NA's   :2 
 ```
 ```
 veg_permanova_allMeta <- adonis2(dist_mtrx ~ Sex * Tissue * Time, data = transp_ALL_ASE_byChromLoc) # testing for interactions between multiple meta variables
@@ -116,15 +116,15 @@ summary(veg_permanova_allMeta)
 ```
 ```       Df           SumOfSqs           R2               F           Pr(>F)   
  Min.   : 0.00   Min.   :0.000   Min.   :0.0000   Min.   : NA   Min.   : NA  
- 1st Qu.:26.50   1st Qu.:3.425   1st Qu.:0.5000   1st Qu.: NA   1st Qu.: NA  
- Median :53.00   Median :6.850   Median :1.0000   Median : NA   Median : NA  
- Mean   :35.33   Mean   :4.567   Mean   :0.6667   Mean   :NaN   Mean   :NaN  
- 3rd Qu.:53.00   3rd Qu.:6.850   3rd Qu.:1.0000   3rd Qu.: NA   3rd Qu.: NA  
- Max.   :53.00   Max.   :6.850   Max.   :1.0000   Max.   : NA   Max.   : NA  
-                                                  NA's   :3     NA's   :3   
+ 1st Qu.:26.50   1st Qu.:2.465   1st Qu.:0.5000   1st Qu.: NA   1st Qu.: NA  
+ Median :53.00   Median :4.931   Median :1.0000   Median : NA   Median : NA  
+ Mean   :35.33   Mean   :3.287   Mean   :0.6667   Mean   :NaN   Mean   :NaN  
+ 3rd Qu.:53.00   3rd Qu.:4.931   3rd Qu.:1.0000   3rd Qu.: NA   3rd Qu.: NA  
+ Max.   :53.00   Max.   :4.931   Max.   :1.0000   Max.   : NA   Max.   : NA  
+                                                  NA's   :3     NA's   :3  
  ```
 
-### I need to identify the genes that are significantly different by group using the pairwise function for adonis
+#### Identifying the genes that are significantly different by group using the pairwise function for adonis
 `pariwise.adonis(dist_mtrx, transp_ALL_ASE_byChromLoc$Sex) # use my distance matrix as I am in binary world (bray curtis is relative abundance, which is what he uses in this package)`
 ## Question: What package does this come from? All I have been able to find is some stand-alone pairwise.adonis function that someone wrote... 
 ###   https://www.researchgate.net/post/How_can_I_do_PerMANOVA_pairwise_contrasts_in_R
@@ -143,8 +143,9 @@ Error in model.frame.default(formula = transp_ALL_ASE_byChromLoc$tissue_genes ~ 
   invalid type (list) for variable 'transp_ALL_ASE_byChromLoc$tissue_genes'
 ```
 
-#Running multipart to identify the "indicator genes" of each time point
+#### Running multipart to identify the "indicator genes" of each time point
 (multipart apparently needs a "A matrix with same number of rows as in y, columns coding the levels of sampling hierarchy")
+
 ```
 hierarchy <- transp_ALL_ASE_byChromLoc[,c('Time', 'Tissue', 'Sex')]
 hierarchy$Sex <- factor(hierarchy$Sex, levels = c('male', 'female'))
@@ -152,7 +153,7 @@ hierarchy$Tissue <- factor(hierarchy$Tissue, levels = c('hypothalamus', 'pituita
 hierarchy$Treatment <- factor(hierarchy$Time, levels = c('control', 'bldg', 'lay', 'inc-d3', 'inc-d9', 'inc-d17', 'hatch', 'n5', 'n9'))
 sex_most_sig <- multipart(dist_mtrx, hierarchy)
 ```
-outputs the following error:
+## outputs the following error:
 ```
 Error in multipart.default(dist_mtrx, hierarchy) : 
   levels are not perfectly nested
