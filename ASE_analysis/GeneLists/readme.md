@@ -1,5 +1,4 @@
 # Each subfolder contained herein contains lists of genes showing ASE
-# Dissertation
 
 This repo contains all scripts generating during my dissertation work
 1) total_lists contains complete lists of ASE genes for each group. 
