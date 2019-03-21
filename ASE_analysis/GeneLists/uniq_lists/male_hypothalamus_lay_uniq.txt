@@ -1,0 +1,6 @@
+From	To	Species	Gene Name
+102084452	ASAP3	Columba livia	ArfGAP with SH3 domain, ankyrin repeat and PH domain 3(ASAP3)
+105400076	plxna1	Aquila chrysaetos canadensis	plexin A1(PLXNA1)
+102091044	lrp6	Columba livia	LDL receptor related protein 6(LRP6)
+102088196	HMGCR	Columba livia	3-hydroxy-3-methylglutaryl-CoA reductase(HMGCR)
+102090549	TXNL4A	Columba livia	thioredoxin like 4A(TXNL4A)

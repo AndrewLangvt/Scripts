@@ -1,0 +1,6 @@
+From	To	Species	Gene Name
+102093496	PLK4	Columba livia	polo like kinase 4(PLK4)
+102092201	PPP1R9B	Columba livia	protein phosphatase 1 regulatory subunit 9B(PPP1R9B)
+102092458	prok2	Columba livia	prokineticin 2(PROK2)
+102096696	STK31	Columba livia	serine/threonine kinase 31(STK31)
+102092466	BANP	Columba livia	BTG3 associated nuclear protein(BANP)

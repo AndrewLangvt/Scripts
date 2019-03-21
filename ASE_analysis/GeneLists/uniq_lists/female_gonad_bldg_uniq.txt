@@ -1,0 +1,3 @@
+From	To	Species	Gene Name
+102096119	IL13RA2	Columba livia	interleukin 13 receptor subunit alpha 2(IL13RA2)
+106891379	LOC106891379	Calidris pugnax	serine protease inhibitor Kazal-type 6-like(LOC106891379)

@@ -1,0 +1,4 @@
+From	To	Species	Gene Name
+102095301	INTS12	Columba livia	integrator complex subunit 12(INTS12)
+102095143	TSHZ1	Columba livia	teashirt zinc finger homeobox 1(TSHZ1)
+105413514	EEF2KMT	Aquila chrysaetos canadensis	eukaryotic elongation factor 2 lysine methyltransferase(EEF2KMT)

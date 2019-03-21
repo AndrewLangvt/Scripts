@@ -1,0 +1,12 @@
+From	To	Species	Gene Name
+103907501	filip1l	Aptenodytes forsteri	filamin A interacting protein 1 like(FILIP1L)
+102084704	KBTBD4	Columba livia	kelch repeat and BTB domain containing 4(KBTBD4)
+102093916	PTPMT1	Columba livia	protein tyrosine phosphatase, mitochondrial 1(PTPMT1)
+102095612	TMEM38B	Columba livia	transmembrane protein 38B(TMEM38B)
+102084830	PHACTR4	Columba livia	phosphatase and actin regulator 4(PHACTR4)
+102091500	ELP3	Columba livia	elongator acetyltransferase complex subunit 3(ELP3)
+102088005	OSGIN1	Columba livia	oxidative stress induced growth inhibitor 1(OSGIN1)
+108506594	LOC108506594	Lepidothrix coronata	desmocollin-2-like(LOC108506594)
+102088811	PANK2	Columba livia	pantothenate kinase 2(PANK2)
+102085860	LOC102085860	Columba livia	putative RNA exonuclease NEF-sp(LOC102085860)
+102098598	DHX32	Columba livia	DEAH-box helicase 32 (putative)(DHX32)

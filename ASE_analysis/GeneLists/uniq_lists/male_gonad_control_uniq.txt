@@ -1,0 +1,3 @@
+From	To	Species	Gene Name
+102090394	ARMC4	Columba livia	armadillo repeat containing 4(ARMC4)
+102096856	TFPI	Columba livia	tissue factor pathway inhibitor(TFPI)

@@ -1,0 +1,6 @@
+From	To	Species	Gene Name
+102097452	LOC102097452	Columba livia	sodium- and chloride-dependent GABA transporter 2(LOC102097452)
+104840276	FAM185A	Haliaeetus leucocephalus	family with sequence similarity 185 member A(FAM185A)
+102090425	ADGRL3	Columba livia	adhesion G protein-coupled receptor L3(ADGRL3)
+102086258	TBC1D2	Columba livia	TBC1 domain family member 2(TBC1D2)
+102097345	MIGA1	Columba livia	mitoguardin 1(MIGA1)

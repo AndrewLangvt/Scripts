@@ -1,0 +1,2 @@
+From	To	Species	Gene Name
+102094530	SH3GL2	Columba livia	SH3 domain containing GRB2 like 2, endophilin A1(SH3GL2)

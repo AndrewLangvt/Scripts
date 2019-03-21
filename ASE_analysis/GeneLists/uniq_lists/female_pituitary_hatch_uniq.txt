@@ -1,0 +1,3 @@
+From	To	Species	Gene Name
+102097453	USP35	Columba livia	ubiquitin specific peptidase 35(USP35)
+102090784	SCG3	Columba livia	secretogranin III(SCG3)

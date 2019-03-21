@@ -1,0 +1,11 @@
+From	To	Species	Gene Name
+102087739	FGF13	Columba livia	fibroblast growth factor 13(FGF13)
+102094305	ELL2	Columba livia	elongation factor for RNA polymerase II 2(ELL2)
+104081304	DUSP10	Fulmarus glacialis	dual specificity phosphatase 10(DUSP10)
+102088771	UMODL1	Columba livia	uromodulin like 1(UMODL1)
+102096360	ZDHHC21	Columba livia	zinc finger DHHC-type containing 21(ZDHHC21)
+102092816	ADRM1	Columba livia	adhesion regulating molecule 1(ADRM1)
+102097456	SRPRB	Columba livia	SRP receptor beta subunit(SRPRB)
+102094401	ZNF335	Columba livia	zinc finger protein 335(ZNF335)
+102087459	DNAJC21	Columba livia	DnaJ heat shock protein family (Hsp40) member C21(DNAJC21)
+102085775	STRADA	Columba livia	STE20-related kinase adaptor alpha(STRADA)

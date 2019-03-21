@@ -1,0 +1,8 @@
+From	To	Species	Gene Name
+102087414	SMAP2	Columba livia	small ArfGAP2(SMAP2)
+102094940	PRKAR2B	Columba livia	protein kinase cAMP-dependent type II regulatory subunit beta(PRKAR2B)
+102091376	WDR59	Columba livia	WD repeat domain 59(WDR59)
+102095716	SLC5A3	Columba livia	solute carrier family 5 member 3(SLC5A3)
+102084032	NDFIP2	Columba livia	Nedd4 family interacting protein 2(NDFIP2)
+102097093	st6gal1	Columba livia	ST6 beta-galactoside alpha-2,6-sialyltransferase 1(ST6GAL1)
+102093160	HSDL2	Columba livia	hydroxysteroid dehydrogenase like 2(HSDL2)

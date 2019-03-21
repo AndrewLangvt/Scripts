@@ -1,0 +1,5 @@
+From	To	Species	Gene Name
+102091736	FRZB	Columba livia	frizzled-related protein(FRZB)
+102098600	REEP5	Columba livia	receptor accessory protein 5(REEP5)
+102097927	STAT4	Columba livia	signal transducer and activator of transcription 4(STAT4)
+102089937	VEPH1	Columba livia	ventricular zone expressed PH domain containing 1(VEPH1)

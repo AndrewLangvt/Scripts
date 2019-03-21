@@ -1,0 +1,6 @@
+From	To	Species	Gene Name
+102090763	SLC25A48	Columba livia	solute carrier family 25 member 48(SLC25A48)
+102088182	SLCO4C1	Columba livia	solute carrier organic anion transporter family member 4C1(SLCO4C1)
+102086535	CEP55	Columba livia	centrosomal protein 55(CEP55)
+102089568	KIF18B	Columba livia	kinesin family member 18B(KIF18B)
+102097729	ATAD3A	Columba livia	ATPase family, AAA domain containing 3A(ATAD3A)

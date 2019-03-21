@@ -1,0 +1,12 @@
+From	To	Species	Gene Name
+102097337	BRD7	Columba livia	bromodomain containing 7(BRD7)
+102098124	QARS	Columba livia	glutaminyl-tRNA synthetase(QARS)
+102086687	ALDH1A2	Columba livia	aldehyde dehydrogenase 1 family member A2(ALDH1A2)
+102087383	SOX18	Columba livia	SRY-box 18(SOX18)
+102089768	CAPS2	Columba livia	calcyphosine 2(CAPS2)
+102089709	PBX3	Columba livia	PBX homeobox 3(PBX3)
+102096126	LOC102096126	Columba livia	regucalcin(LOC102096126)
+102085260	FARP2	Columba livia	FERM, ARH/RhoGEF and pleckstrin domain protein 2(FARP2)
+102083408	ST5	Columba livia	suppression of tumorigenicity 5(ST5)
+102094519	OAF	Columba livia	out at first homolog(OAF)
+102090729	MTRF1L	Columba livia	mitochondrial translational release factor 1 like(MTRF1L)

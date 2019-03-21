@@ -1,0 +1,2 @@
+From	To	Species	Gene Name
+102086126	PHF21B	Columba livia	PHD finger protein 21B(PHF21B)

@@ -1,0 +1,7 @@
+From	To	Species	Gene Name
+102085887	PAPD7	Columba livia	poly(A) RNA polymerase D7, non-canonical(PAPD7)
+102089833	STK10	Columba livia	serine/threonine kinase 10(STK10)
+102089057	KCNK17	Columba livia	potassium two pore domain channel subfamily K member 17(KCNK17)
+104073298	CAPN14	Fulmarus glacialis	calpain 14(CAPN14)
+102095438	RASL11A	Columba livia	RAS like family 11 member A(RASL11A)
+102091250	TMEM100	Columba livia	transmembrane protein 100(TMEM100)

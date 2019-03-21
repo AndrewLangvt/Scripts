@@ -1,0 +1,5 @@
+From	To	Species	Gene Name
+102094759	LOC102094759	Columba livia	chromosome unknown open reading frame, human C1orf146(LOC102094759)
+102097857	AURKA	Columba livia	aurora kinase A(AURKA)
+104837758	GEM	Haliaeetus leucocephalus	GTP binding protein overexpressed in skeletal muscle(GEM)
+105400326	BBS2	Aquila chrysaetos canadensis	Bardet-Biedl syndrome 2(BBS2)

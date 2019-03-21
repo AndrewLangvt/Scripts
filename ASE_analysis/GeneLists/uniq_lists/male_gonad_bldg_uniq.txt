@@ -1,0 +1,6 @@
+From	To	Species	Gene Name
+102088864	tmem120a	Columba livia	transmembrane protein 120A(TMEM120A)
+102086272	CFAP65	Columba livia	cilia and flagella associated protein 65(CFAP65)
+102094095	ABCB11	Columba livia	ATP binding cassette subfamily B member 11(ABCB11)
+102098104	PGM2	Columba livia	phosphoglucomutase 2(PGM2)
+102097287	CPSF3	Columba livia	cleavage and polyadenylation specific factor 3(CPSF3)

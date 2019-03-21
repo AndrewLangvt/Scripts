@@ -1,0 +1,4 @@
+From	To	Species	Gene Name
+102095747	SESN2	Columba livia	sestrin 2(SESN2)
+102093982	SMTNL2	Columba livia	smoothelin like 2(SMTNL2)
+102083404	DIABLO	Columba livia	diablo IAP-binding mitochondrial protein(DIABLO)

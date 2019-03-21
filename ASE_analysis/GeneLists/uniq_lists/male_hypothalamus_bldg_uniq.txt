@@ -1,0 +1,6 @@
+From	To	Species	Gene Name
+102098352	YWHAQ	Columba livia	tyrosine 3-monooxygenase/tryptophan 5-monooxygenase activation protein theta(YWHAQ)
+102098789	DDX58	Columba livia	DExD/H-box helicase 58(DDX58)
+105410915	C1QL3	Aquila chrysaetos canadensis	complement C1q like 3(C1QL3)
+102096819	wasf1	Columba livia	WAS protein family member 1(WASF1)
+102085262	TMEM62	Columba livia	transmembrane protein 62(TMEM62)

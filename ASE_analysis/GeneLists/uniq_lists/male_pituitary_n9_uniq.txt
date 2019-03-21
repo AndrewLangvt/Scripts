@@ -1,0 +1,2 @@
+From	To	Species	Gene Name
+102096913	AP5M1	Columba livia	adaptor related protein complex 5 mu 1 subunit(AP5M1)

@@ -1,0 +1,8 @@
+From	To	Species	Gene Name
+102094268	LOC102094268	Columba livia	band 4.1-like protein 4B(LOC102094268)
+102084851	TSPO	Columba livia	translocator protein(TSPO)
+102083476	COG3	Columba livia	component of oligomeric golgi complex 3(COG3)
+102091674	FLOT2	Columba livia	flotillin 2(FLOT2)
+102089397	SBSPON	Columba livia	somatomedin B and thrombospondin type 1 domain containing(SBSPON)
+102087515	LOC102087515	Columba livia	collagen alpha-1(VII) chain(LOC102087515)
+102096400	NDUFA4	Columba livia	NDUFA4, mitochondrial complex associated(NDUFA4)

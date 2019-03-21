@@ -1,0 +1,2 @@
+From	To	Species	Gene Name
+103823135	CWC27	Serinus canaria	CWC27 spliceosome associated protein homolog(CWC27)

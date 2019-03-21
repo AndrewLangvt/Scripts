@@ -1,0 +1,5 @@
+From	To	Species	Gene Name
+102090002	NIT2	Columba livia	nitrilase family member 2(NIT2)
+102095013	DOCK11	Columba livia	dedicator of cytokinesis 11(DOCK11)
+102090305	TMEM200A	Columba livia	transmembrane protein 200A(TMEM200A)
+102090227	GNPAT	Columba livia	glyceronephosphate O-acyltransferase(GNPAT)

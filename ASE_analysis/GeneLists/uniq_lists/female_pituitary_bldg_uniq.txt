@@ -1,0 +1,6 @@
+From	To	Species	Gene Name
+102085113	UNC45A	Columba livia	unc-45 myosin chaperone A(UNC45A)
+102096502	MECR	Columba livia	mitochondrial trans-2-enoyl-CoA reductase(MECR)
+102086282	PRDX1	Columba livia	peroxiredoxin 1(PRDX1)
+102088968	LOC102088968	Columba livia	cytochrome b5 reductase 4(LOC102088968)
+102093664	SEPT9	Columba livia	septin 9(SEPT9)

@@ -1,0 +1,3 @@
+From	To	Species	Gene Name
+102084581	CREB5	Columba livia	cAMP responsive element binding protein 5(CREB5)
+102095840	LAPTM5	Columba livia	lysosomal protein transmembrane 5(LAPTM5)

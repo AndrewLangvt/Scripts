@@ -1,0 +1,5 @@
+From	To	Species	Gene Name
+102092470	CENPH	Columba livia	centromere protein H(CENPH)
+102094766	PDCL2	Columba livia	phosducin like 2(PDCL2)
+102090619	FBXO6	Columba livia	F-box protein 6(FBXO6)
+102096879	BOC	Columba livia	BOC cell adhesion associated, oncogene regulated(BOC)

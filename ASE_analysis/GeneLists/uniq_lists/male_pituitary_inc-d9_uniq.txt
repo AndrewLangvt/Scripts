@@ -1,0 +1,3 @@
+From	To	Species	Gene Name
+102095195	SMIM14	Columba livia	small integral membrane protein 14(SMIM14)
+102096784	RAB39A	Columba livia	RAB39A, member RAS oncogene family(RAB39A)

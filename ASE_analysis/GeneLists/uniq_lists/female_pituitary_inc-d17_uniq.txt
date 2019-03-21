@@ -1,0 +1,2 @@
+From	To	Species	Gene Name
+102088585	MED22	Columba livia	mediator complex subunit 22(MED22)

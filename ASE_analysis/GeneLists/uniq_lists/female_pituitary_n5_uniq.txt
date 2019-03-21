@@ -1,0 +1,9 @@
+From	To	Species	Gene Name
+102086694	LOC102086694	Columba livia	UPF0061 protein azo1574(LOC102086694)
+102085362	LOC102085362	Columba livia	DNA-directed RNA polymerases I and III subunit RPAC2(LOC102085362)
+102095974	AGR2	Columba livia	anterior gradient 2, protein disulphide isomerase family member(AGR2)
+102096728	PTGR2	Columba livia	prostaglandin reductase 2(PTGR2)
+102091689	MTHFD1	Columba livia	methylenetetrahydrofolate dehydrogenase, cyclohydrolase and formyltetrahydrofolate synthetase 1(MTHFD1)
+102097858	COL20A1	Columba livia	collagen type XX alpha 1 chain(COL20A1)
+102084238	ADAL	Columba livia	adenosine deaminase like(ADAL)
+103915479	ARF4	Pygoscelis adeliae	ADP ribosylation factor 4(ARF4)

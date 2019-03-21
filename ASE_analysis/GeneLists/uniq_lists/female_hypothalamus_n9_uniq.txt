@@ -1,0 +1,4 @@
+From	To	Species	Gene Name
+102085261	PDE9A	Columba livia	phosphodiesterase 9A(PDE9A)
+102089962	PRDM12	Columba livia	PR/SET domain 12(PRDM12)
+102095403	LASP1	Columba livia	LIM and SH3 protein 1(LASP1)

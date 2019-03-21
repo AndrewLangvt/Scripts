@@ -1,0 +1,5 @@
+From	To	Species	Gene Name
+102095999	SLC35C1	Columba livia	solute carrier family 35 member C1(SLC35C1)
+102083717	LOC102083717	Columba livia	Y+L amino acid transporter 2(LOC102083717)
+102094568	CCSER1	Columba livia	coiled-coil serine rich protein 1(CCSER1)
+102090643	SULF1	Columba livia	sulfatase 1(SULF1)

@@ -1,0 +1,10 @@
+From	To	Species	Gene Name
+102098053	JPH3	Columba livia	junctophilin 3(JPH3)
+102086734	GLB1L2	Columba livia	galactosidase beta 1 like 2(GLB1L2)
+102088080	SNCG	Columba livia	synuclein gamma(SNCG)
+102097535	SORD	Columba livia	sorbitol dehydrogenase(SORD)
+102085242	rubcn	Columba livia	RUN and cysteine rich domain containing beclin 1 interacting protein(RUBCN)
+102092328	ASPHD2	Columba livia	aspartate beta-hydroxylase domain containing 2(ASPHD2)
+102087186	NPY	Columba livia	neuropeptide Y(NPY)
+102093197	RNF157	Columba livia	ring finger protein 157(RNF157)
+102093112	GRAMD4	Columba livia	GRAM domain containing 4(GRAMD4)

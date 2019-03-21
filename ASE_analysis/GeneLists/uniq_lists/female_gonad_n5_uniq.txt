@@ -1,0 +1,12 @@
+From	To	Species	Gene Name
+102084464	HNF1B	Columba livia	HNF1 homeobox B(HNF1B)
+102094992	LOC102094992	Columba livia	zona pellucida sperm-binding protein 3(LOC102094992)
+102090340	PLK3	Columba livia	polo like kinase 3(PLK3)
+102083718	IL15	Columba livia	interleukin 15(IL15)
+102084626	LEF1	Columba livia	lymphoid enhancer binding factor 1(LEF1)
+102090705	CENPI	Columba livia	centromere protein I(CENPI)
+102088427	DTL	Columba livia	denticleless E3 ubiquitin protein ligase homolog(DTL)
+102083678	BMP2	Columba livia	bone morphogenetic protein 2(BMP2)
+102084121	TOR4A	Columba livia	torsin family 4 member A(TOR4A)
+102090854	ACAA2	Columba livia	acetyl-CoA acyltransferase 2(ACAA2)
+102092620	LOC102092620	Columba livia	histone H3(LOC102092620)

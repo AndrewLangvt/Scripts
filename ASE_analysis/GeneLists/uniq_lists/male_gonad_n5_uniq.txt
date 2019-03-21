@@ -1,0 +1,9 @@
+From	To	Species	Gene Name
+102083519	WBSCR27	Columba livia	Williams Beuren syndrome chromosome region 27(WBSCR27)
+102097979	SMARCAL1	Columba livia	SWI/SNF related, matrix associated, actin dependent regulator of chromatin, subfamily a like 1(SMARCAL1)
+102093132	CDCA4	Columba livia	cell division cycle associated 4(CDCA4)
+102098475	LOC102098475	Columba livia	carboxypeptidase A2(LOC102098475)
+102092530	NUSAP1	Columba livia	nucleolar and spindle associated protein 1(NUSAP1)
+102097505	KIAA2026	Columba livia	KIAA2026 ortholog(KIAA2026)
+102084423	CEP112	Columba livia	centrosomal protein 112(CEP112)
+102097215	LOC102097215	Columba livia	E3 ubiquitin-protein ligase RNF13(LOC102097215)

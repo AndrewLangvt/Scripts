@@ -1,0 +1,7 @@
+From	To	Species	Gene Name
+102098842	p2ry1	Columba livia	purinergic receptor P2Y1(P2RY1)
+102091724	ZBTB41	Columba livia	zinc finger and BTB domain containing 41(ZBTB41)
+102093042	KCNJ6	Columba livia	potassium voltage-gated channel subfamily J member 6(KCNJ6)
+102093991	COPS5	Columba livia	COP9 signalosome subunit 5(COPS5)
+102083738	NUDT14	Columba livia	nudix hydrolase 14(NUDT14)
+102096778	PRPF6	Columba livia	pre-mRNA processing factor 6(PRPF6)
